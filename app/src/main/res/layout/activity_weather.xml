@@ -7,15 +7,46 @@
     tools:context="com.example.linson.myweather.WeatherActivity">
     <ImageView
         android:id="@+id/iv_background"
-        android:scaleType="centerCrop"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-    <LinearLayout
-        android:fitsSystemWindows="true"
-        android:orientation="vertical"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop" />
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <include layout="@layout/layout_title"/>
-        <include layout="@layout/layout_temperature"/>
-    </LinearLayout>
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/sr_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fitsSystemWindows="true"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/layout_title" />
+
+                    <include layout="@layout/layout_temperature" />
+
+                    <include layout="@layout/layout_temperature_week" />
+
+                    <include layout="@layout/layout_air_quality" />
+                </LinearLayout>
+            </ScrollView>
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <fragment
+            android:id="@+id/choose_area_fragment"
+            android:name="com.example.linson.myweather.ChooseWeatherFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="start" />
+    </android.support.v4.widget.DrawerLayout>
 </FrameLayout>

@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="150dp">
+    android:layout_width="match_parent"
+    android:layout_height="130dp"
+    android:orientation="vertical"
+    android:paddingRight="18dp">
     <TextView
-        android:text="℃"
-        android:textSize="60sp"
-        android:textStyle="bold"
-        android:gravity="end|bottom"
-        android:paddingRight="10dp"
+        android:id="@+id/tv_temperature"
         android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_height="0dp" />
-    <TextView
-        android:text="多云"
-        android:textSize="30sp"
         android:gravity="end|bottom"
-        android:paddingRight="10dp"
+        android:text="℃"
+        android:textColor="#fff"
+        android:textSize="60sp" />
+
+    <TextView
+        android:id="@+id/tv_temperature_status"
         android:layout_width="match_parent"
-        android:layout_height="40dp" />
+        android:layout_height="40dp"
+        android:gravity="end|bottom"
+        android:text="天气状态"
+        android:textColor="#fff"
+        android:textSize="20sp" />
 </LinearLayout>

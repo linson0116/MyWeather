@@ -31,6 +31,9 @@ import static android.content.ContentValues.TAG;
 
 public class ChooseWeatherFragment extends Fragment {
 
+    public static final int PROVINCE = 0;
+    public static final int CITY = 1;
+    public static final int COUNTY = 2;
     private ListView lv_choose_weather;
     private TextView tv_title;
     private ImageView iv_back;
@@ -42,10 +45,6 @@ public class ChooseWeatherFragment extends Fragment {
     private Context context;
     private int list_level;
     private String url = "http://guolin.tech/api/china";
-    public static final int PROVINCE = 0;
-    public static final int CITY = 1;
-    public static final int COUNTY = 2;
-
     private String provinceCode = null;
     private String provinceName = null;
     private String cityCode = null;
@@ -187,11 +186,13 @@ public class ChooseWeatherFragment extends Fragment {
                 }else if (list_level == COUNTY) {
                     Log.i(TAG, "点击区县 ");
                     countyName = mDataList.get(i);
-                    String weatherId = ToolsUtils.findWeatherIdByName(countyName);
-                    Log.i(TAG, "weatherId: " + weatherId);
+                    String weather_id = ToolsUtils.findWeatherIdByName(countyName);
+                    Log.i(TAG, "weather_id: " + weather_id);
                     Intent intent = new Intent(context, WeatherActivity.class);
-                    intent.putExtra("weather_id", weatherId);
+                    intent.putExtra("weather_id", weather_id);
+                    ToolsUtils.setString(context, "weather_id", weather_id);
                     startActivity(intent);
+                    getActivity().finish();
                 }
             }
         });
